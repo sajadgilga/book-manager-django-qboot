@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from books.views import CreateBookView, RetrieveBookView
+from users.views import LoginView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/auth/login', LoginView.as_view()),
+    path('books/<int:book_id>', RetrieveBookView.as_view()),
+    path('books/create', CreateBookView.as_view())
 ]
